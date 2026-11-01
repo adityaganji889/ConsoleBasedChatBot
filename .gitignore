@@ -1,0 +1,32 @@
+# Eclipse workspace
+.metadata/
+
+# Eclipse project settings
+langchain4jchat/.settings/
+
+# Build output
+**/bin/
+
+# Ignore all Maven build output
+**/target/
+
+# Compiled Java classes
+**/*.class
+
+# Project
+langchain4jchat/.project
+
+# Classpath
+langchain4jchat/.classpath
+
+# Properties File
+langchain4jchat/src/main/resources/langchain4jchat.properties
+
+# IDE files (optional)
+.idea/
+.vscode/
+*.iml
+
+# OS files
+.DS_Store
+Thumbs.db
