@@ -34,7 +34,7 @@ public class App {
 			try {
 				int val = (int) Integer.parseInt(inputValue);
 				if (val == 1) {
-					System.out.println("Enter the topic:");
+					System.out.print("Enter the topic:");
 					String topic = bfr.readLine().trim();
 					StudyPlan studyPlan = ChatHelper.prepareStudyPlanner(topic);
 					System.out.println("-------Study Plan for topic: " + studyPlan.planTitle());
@@ -56,6 +56,7 @@ public class App {
 			CompletableFuture<ChatResponse> futureResponse = new CompletableFuture<>();
 			// llm call
 //             System.out.println("ChatBot: "+response);
+			System.out.print("ChatBot: ");
 			tokenStream.onCompleteResponse(chatResponse -> {
 				System.out.println();
 				futureResponse.complete(chatResponse);

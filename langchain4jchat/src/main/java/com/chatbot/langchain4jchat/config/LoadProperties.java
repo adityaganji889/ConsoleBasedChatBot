@@ -1,5 +1,6 @@
 package com.chatbot.langchain4jchat.config;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -20,7 +21,7 @@ public class LoadProperties {
 		try {
 			File file = new File(filePath);
 			FileReader fis = new FileReader(file);
-			p.load(fis);	
+			p.load(new BufferedReader(fis));	
 		}
 		catch(IOException e) {
 		    System.out.println("Exception occurred while loading properties:"+e.getMessage());

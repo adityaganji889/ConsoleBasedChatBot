@@ -21,11 +21,17 @@ public class ChatHelper {
 	
 	private static LoadProperties p = null;
 	private static StreamingChatModel chatModel = null;
+	private static ChatModel studyPlanChatModel = null;
 	private static BotAssistant botAssistant = null;
 	
 	static {
-		LoadProperties p = new LoadProperties();
-		StreamingChatModel chatModel = OpenAiStreamingChatModel.builder()  //Streaming used for non-blocking responses
+		p = new LoadProperties();
+	    chatModel = OpenAiStreamingChatModel.builder()  //Streaming used for non-blocking responses
+                .apiKey(p.getApiKey())
+                .modelName(p.getModelName())
+                .temperature(p.getTemperature())
+                .build();
+	    studyPlanChatModel = OpenAiChatModel.builder()
                 .apiKey(p.getApiKey())
                 .modelName(p.getModelName())
                 .temperature(p.getTemperature())
@@ -63,7 +69,7 @@ public class ChatHelper {
 //                .modelName(p.getModelName())
 //                .temperature(p.getTemperature())
 //                .build();	
-		StudyPlanner studyPlanner = AiServices.create(StudyPlanner.class, chatModel);
+		StudyPlanner studyPlanner = AiServices.create(StudyPlanner.class, studyPlanChatModel);
 		StudyPlan studyPlan = studyPlanner.getStudyPlan(topic);
 		return studyPlan;
 	}
